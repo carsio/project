@@ -12,13 +12,13 @@ export function Header() {
             <h1 className="text-2xl font-bold text-white">LiveStream</h1>
           </div>
           <div className="flex items-center space-x-6">
-            <nav>
+            {/* <nav>
               <ul className="flex space-x-6">
                 <li><a href="#" className="text-white hover:text-purple-200">Home</a></li>
                 <li><a href="#" className="text-white hover:text-purple-200">Schedule</a></li>
                 <li><a href="#" className="text-white hover:text-purple-200">About</a></li>
               </ul>
-            </nav>
+            </nav> */}
             <ThemeToggle />
           </div>
         </div>

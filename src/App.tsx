@@ -5,7 +5,8 @@ import { StreamInfo } from './components/StreamInfo';
 import { Chat } from './components/Chat/index';
 
 function App() {
-  const streamUrl = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
+  // const streamUrl = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
+  const streamUrl = "/live/stream.m3u8";
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">

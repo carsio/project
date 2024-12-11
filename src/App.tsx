@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from './components/Header';
 import { VideoPlayer } from './components/VideoPlayer';
 import { StreamInfo } from './components/StreamInfo';
-import { Chat } from './components/Chat';
+import { Chat } from './components/Chat/index';
 
 function App() {
   const streamUrl = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";

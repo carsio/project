@@ -20,10 +20,9 @@ RUN npm run build
 FROM alfg/nginx-rtmp
 
 # Remove o arquivo padrão do Nginx
-RUN rm -rf /usr/share/nginx/html/*
 
 # Copia os arquivos construídos para o Nginx
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /www/static
 
 # Copia o arquivo de configuração do Nginx (opcional, caso precise configurar algo customizado)
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
@@ -32,4 +31,7 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 
 # Inicia o Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx"]
+# CMD envsubst "$(env | sed -e 's/=.*//' -e 's/^/\$/g')" < \
+#   /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && \
+#   nginx

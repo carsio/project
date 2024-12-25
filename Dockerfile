@@ -19,16 +19,6 @@ RUN npm run build
 # Etapa 2: Servir os arquivos e configurar o túnel reverso
 FROM alfg/nginx-rtmp
 
-ARG SSH_HOST
-ARG SSH_USER
-ARG LOCAL_PORT
-ARG REMOTE_PORT
-
-ENV SSH_HOST=$SSH_HOST
-ENV SSH_USER=$SSH_USER
-ENV LOCAL_PORT=$LOCAL_PORT
-ENV REMOTE_PORT=$REMOTE_PORT
-
 # Instala o cliente SSH
 RUN apk update && apk add openssh-client
 
@@ -47,14 +37,11 @@ RUN chmod 600 /root/.ssh/id_rsa
 
 RUN env
 
-# Adiciona a máquina B ao known_hosts
-RUN ssh-keyscan -H $SSH_HOST > /root/.ssh/known_hosts
-
 # Expõe a porta 80 para o Nginx
 EXPOSE 80
 
 # Comando para iniciar o túnel reverso e o Nginx
-CMD ["sh", "-c", "ssh -N -R 0.0.0.0:$REMOTE_PORT:localhost:$LOCAL_PORT $SSH_USER@$SSH_HOST & nginx"]
+CMD ["sh", "-c", "ssh-keyscan -H $SSH_HOST > /root/.ssh/known_hosts && ssh -N -R 0.0.0.0:$REMOTE_PORT:localhost:$LOCAL_PORT $SSH_USER@$SSH_HOST & nginx"]
 
 # CMD envsubst "$(env | sed -e 's/=.*//' -e 's/^/\$/g')" < \
 #   /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && \

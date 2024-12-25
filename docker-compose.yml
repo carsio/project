@@ -1,10 +1,13 @@
-version: '3.8'
-
 services:
   frontend:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        SSH_HOST: "${SSH_HOST}"
+        SSH_USER: "${SSH_USER}"
+        LOCAL_PORT: "${LOCAL_PORT}"
+        REMOTE_PORT: "${REMOTE_PORT}"
     ports:
       - "3000:80"
       - "1935:1935"

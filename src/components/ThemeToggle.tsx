@@ -1,5 +1,5 @@
 import { Moon, Sun } from 'lucide-react';
-import { useDarkMode } from '../hooks/useDarkMode';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
 export function ThemeToggle() {
   const { isDark, setIsDark } = useDarkMode();

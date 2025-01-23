@@ -1,7 +1,7 @@
 import Message from "../../models/message";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { ArrowDown, ArrowUp } from "lucide-react";
-import { useDarkMode } from "../../hooks/useDarkMode";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 interface ChatMessagesProps {
   messages?: Message[];

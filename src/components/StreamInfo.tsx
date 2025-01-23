@@ -1,4 +1,3 @@
-import React from 'react';
 import { Users, Clock } from 'lucide-react';
 
 interface StreamInfoProps {

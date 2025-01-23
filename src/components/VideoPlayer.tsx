@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import Hls from 'hls.js';
+import { useEffect, useRef } from 'react';
 import { useVideoPlayer } from '../hooks/useVideoPlayer';
 
 interface VideoPlayerProps {

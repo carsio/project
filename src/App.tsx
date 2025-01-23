@@ -1,4 +1,3 @@
-import React from 'react';
 import { Header } from './components/Header';
 import { VideoPlayer } from './components/VideoPlayer';
 import { StreamInfo } from './components/StreamInfo';

@@ -23,10 +23,11 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
         console.log("Scroll detected. Is at bottom:", isAtBottom);
       }
     };
-
     container?.addEventListener("scroll", handleScroll);
-    return () => container?.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      container?.removeEventListener("scroll", handleScroll)
+    };
+  }, [messages]);
 
   useEffect(() => {
     if (isScrolledToBottom && containerRef.current) {

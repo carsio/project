@@ -1,6 +1,6 @@
 import Message from "../../models/message";
 import { useEffect, useRef, useState, useMemo } from "react";
-import { ArrowDown, ArrowUp } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { useDarkMode } from "../../contexts/DarkModeContext";
 
 interface ChatMessagesProps {
@@ -52,8 +52,8 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
     return (
       <div className="flex-1 p-4 overflow-y-scroll bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
         <div className="space-y-4">
-          {isDark ? <ArrowDown size={40} className="mx-auto" /> : <ArrowUp size={40} className="mx-auto" />}
           <p className="text-gray-500 dark:text-gray-400 text-center">Chat messages will appear here</p>
+          <ArrowDown size={40} className="mx-auto" />
         </div>
       </div>
     );

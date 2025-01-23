@@ -36,7 +36,7 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
         behavior: "smooth",
       });
     }
-  }, [messages]);
+  }, [messages, isScrolledToBottom]);
 
   const darkModeColors = useMemo(
     () => ["#FF69B4", "#1E90FF", "#32CD32", "#FFD700", "#FF4500", "#9400D3", "#00CED1"],
@@ -78,7 +78,10 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
                     <h3
                       className="font-semibold"
                       style={{
-                        color: generateRandomColorForUser(message.user.name, isDark ? darkModeColors : lightModeColors),
+                        color: generateRandomColorForUser(
+                          message.user.name,
+                          isDark ? darkModeColors : lightModeColors
+                        ),
                       }}
                     >
                       {message.user.name}

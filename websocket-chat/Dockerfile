@@ -14,7 +14,7 @@ COPY . .
 RUN go build -o app .
 
 # Etapa 2: Runtime
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 # Configura o diretório de trabalho no runtime
 WORKDIR /app

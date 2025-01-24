@@ -1,8 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
-export const DarkModeContext = createContext<{ isDark: boolean; setIsDark: React.Dispatch<React.SetStateAction<boolean>> } | undefined>(undefined);
-
 import { ReactNode } from 'react';
+
+interface DarkModeContextData {
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const DarkModeContext = createContext< DarkModeContextData | undefined>(undefined);
 
 export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
   const [isDark, setIsDark] = useState(() => {

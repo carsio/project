@@ -20,4 +20,14 @@ export default class Message {
     this.user = user;
     this.timestamp = new Date().toISOString();
   }
+
+  toString() {
+    return JSON.stringify(this);
+}
+
+  static fromString(serializedMessage: string): Message {
+    const obj = JSON.parse(serializedMessage);
+    const user = new User(obj.user.name);
+    return new Message(obj.content, user);
+  }
 }

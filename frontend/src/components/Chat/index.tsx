@@ -2,19 +2,17 @@ import { ChatHeader } from './ChatHeader';
 import { ChatMessages } from './ChatMessages';
 import { ChatInput } from './ChatInput';
 import Message, { User } from '../../models/message';
-import { useState } from 'react';
 import useCuteUserName from '../../hooks/useCuteUserName';
+import useWebSocket from '../../hooks/useWebsocket';
 
 export function Chat() {
-
-  const [messages, setMessages] = useState<Message[]>([]);
-
+  const { messages, sendMessage } = useWebSocket("ws://localhost:8080/ws");
   const cuteName = useCuteUserName();
 
   const handleSendMessage = (message: string) => {
     console.log('Message sent:', message);
     const newMessage = new Message(message, new User(cuteName));
-    setMessages([...messages, newMessage]);
+    sendMessage(newMessage.toString());
   };
 
   return (

@@ -6,7 +6,7 @@ import useCuteUserName from '../../hooks/useCuteUserName';
 import useWebSocket from '../../hooks/useWebsocket';
 
 export function Chat() {
-  const { messages, sendMessage } = useWebSocket("ws://localhost:8080/ws");
+  const { messages, sendMessage } = useWebSocket("/ws");
   const cuteName = useCuteUserName();
 
   const handleSendMessage = (message: string) => {

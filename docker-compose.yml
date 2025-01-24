@@ -11,3 +11,19 @@ services:
     ports:
       - "3000:80"
       - "1935:1935"
+    networks:
+      - default
+
+  websocket-chat:
+    build:
+      context: websocket-chat
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - default
+
+networks:
+  default:
+    name: app_network
+    driver: bridge

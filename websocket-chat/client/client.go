@@ -42,6 +42,7 @@ func (c *Client) Write() {
 
 	for message := range c.send {
 		err := c.conn.WriteMessage(websocket.TextMessage, message)
+		log.Println("Mensagem enviada:", string(message))
 		if err != nil {
 			log.Println("Erro ao enviar mensagem:", err)
 			break

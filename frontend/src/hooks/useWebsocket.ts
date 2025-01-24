@@ -7,8 +7,20 @@ const useWebSocket = (url: string) => {
   const socketRef = useRef<WebSocket | null>(null); // Referência para o WebSocket
 
   useEffect(() => {
+    if (socketRef.current) {
+      return;
+    }
+
     const socket = new WebSocket(url);
     socketRef.current = socket; // Salvar o socket na referência
+
+    if (socket.readyState !== WebSocket.OPEN && socket.readyState !== WebSocket.CONNECTING) {
+      socket.onopen = () => {
+        console.log("WebSocket conectado");
+        setStatus("Connected");
+      };
+      // Adicione aqui o código para iniciar a conexão do WebSocket
+    }
 
     // Evento: Conexão aberta
     socket.onopen = () => {
